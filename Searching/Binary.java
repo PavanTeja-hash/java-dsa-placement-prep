@@ -11,7 +11,7 @@ class Binary {
         int n = sc.nextInt();
 
         int[] arr = new int[n];
-        System.out.println("Enter the " + n + "number of values: ");
+        System.out.println("Enter the " + n + " number of values: ");
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
