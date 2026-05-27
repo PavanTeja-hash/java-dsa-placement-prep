@@ -1,49 +1,52 @@
 
 import java.util.Scanner;
 
-public class Insertionsort {
+public class Selectionsort {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int temp = 0;
+        int minIndex = -1;
 
         System.out.println("Enter the number of elements of the array: ");
         int n = sc.nextInt();
-        int arr[] = new int[n];
+        int nums[] = new int[n];
 
         System.out.println("Enter the " + n + " elements: ");
         for (int z = 0; z < n; z++) {
-            arr[z] = sc.nextInt();
+            nums[z] = sc.nextInt();
         }
 
         System.out.println("Array before sorting: ");
         for (int z = 0; z < n; z++) {
             if (z == n - 1) {
-                System.out.print(arr[z]);
+                System.out.print(nums[z]);
             } else {
-                System.out.print(arr[z] + ", ");
+                System.out.print(nums[z] + ", ");
             }
         }
         System.out.println();
 
-        for (int i = 1; i < n; i++) {
-            int key = arr[i];
-            int j = i - 1;
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j--;
+        for (int i = 0; i < n - 1; i++) {
+            minIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                if (nums[minIndex] > nums[j]) {
+                    minIndex = j;
+                }
             }
-            arr[j + 1] = key;
+            temp = nums[minIndex];
+            nums[minIndex] = nums[i];
+            nums[i] = temp;
         }
-
         System.out.println("Array after sorting: ");
         for (int z = 0; z < n; z++) {
             if (z == n - 1) {
-                System.out.print(arr[z]);
+                System.out.print(nums[z]);
             } else {
-                System.out.print(arr[z] + ", ");
+                System.out.print(nums[z] + ", ");
             }
         }
+
     }
 
 }
