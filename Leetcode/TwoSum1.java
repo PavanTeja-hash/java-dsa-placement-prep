@@ -1,27 +1,49 @@
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class TwoSum1 {
 
     public static int[] twoSum(int[] nums, int target) {
 
-        for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-                if (nums[i] + nums[j] == target) {
-                    return new int[]{i, j};
-                }
+        for (int i = 0; i < nums.length; i++) {
+
+            int diff = target - nums[i];
+
+            if (map.containsKey(diff)) {
+                return new int[]{map.get(diff), i};
             }
+
+            map.put(nums[i], i);
         }
 
-        return new int[]{-1};
+        return new int[]{-1, -1};
     }
 
     public static void main(String[] args) {
 
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println(Arrays.toString(twoSum(nums, target)));
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] nums = new int[n];
+
+        System.out.println("Enter array elements:");
+
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter target: ");
+        int target = sc.nextInt();
+
+        int[] result = twoSum(nums, target);
+
+        System.out.println("Indices: " + result[0] + " " + result[1]);
+
+        sc.close();
     }
 }
